@@ -1,0 +1,40 @@
+version: '3'
+
+networks:
+  dev:
+    driver: bridge
+
+services:
+  db:
+    image: postgres:15.3-bullseye
+    restart: always
+    environment:
+      POSTGRES_USER: merkle_storage
+      POSTGRES_PASSWORD: testing
+      POSTGRES_DB: merkle_storage
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5432:5432"
+    networks:
+      - dev
+
+  minio:
+    image: minio/minio:RELEASE.2023-05-18T00-05-36Z
+    restart: always
+    environment:
+      MINIO_ACCESS_KEY: myaccesskey
+      MINIO_SECRET_KEY: mysecretkey
+    command: server /data --console-address :9001
+    volumes:
+      - minio-data:/data
+    ports:
+      - "127.0.0.1:9000:9000"
+      - "127.0.0.1:9001:9001"
+    networks:
+      - dev
+
+volumes:
+  minio-data:
+  pg-data:

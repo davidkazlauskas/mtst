@@ -1,0 +1,16 @@
+{
+  "entries": [
+    {
+      "File": {
+        "filename": "shell.nix",
+        "hash": "7eb6a8a2b4e0fb1f06ea44c3b1018b607a187215b5ab94aa7f21e439e6ed7b3a"
+      }
+    },
+    {
+      "File": {
+        "filename": "docker-compose.yml",
+        "hash": "38718f6949969000f05c96391d43832bd07d12eb8e7343ca19fd4547e97f9722"
+      }
+    }
+  ]
+}
